@@ -2,8 +2,8 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-import biliClass.biliVideo as biliv
-import biliClass.biliUp as biliu
+import biliClass.biliAid as biliv
+import biliClass.biliMid as biliu
 
 win = tk.Tk()
 win.title('BiliTools (测试版v0.2)')

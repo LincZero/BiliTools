@@ -1,10 +1,7 @@
 import requests
 import json
-import sys
-import os
-# print(sys.path)
-# sys.path.append(os.path.abspath("../"))
-import avbv as ab
+import biliClass.avbv as ab
+from network.reqjson import reqjson
 
 
 class Aid:
@@ -13,17 +10,9 @@ class Aid:
     # av号构造完整对象
     def __init__(self, av):
         bv = ab.encode(int(av))
-        reallink = 'https://api.bilibili.com/x/web-interface/view?bvid=' + \
-            str(bv)
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36'
-        }
-        r = requests.get(reallink, headers=headers)
-        # json数据处理
-        cont_str = r.text
-        cont_json = json.loads(cont_str)
-        # 提取数据
-        cont_json = cont_json['data']
+        reallink = 'https://api.bilibili.com/x/web-interface/view?bvid=' + str(bv)
+        cont_json = reqjson(reallink)['data']
+
         self.dic = {
             'video': {
                 'bv': ['bv号', cont_json['bvid']],
@@ -72,11 +61,3 @@ class Aid:
     # sql代码生成：根据av更新信息
     def sql_fill_update(self):
         pass
-
-aid1 = Aid(19349301)
-aid2 = Aid(39740049)
-print(aid1.fns_line())
-print(aid2.fns_line())
-print(aid1.fns_line())
-
-# print(aid.fns_json())
