@@ -5,13 +5,13 @@ import time
 def dblink():  # 连接数据库
     
     # demo
-    # return MySQLdb.connect(
-    #     host='localhost',
-    #     user='root',
-    #     passwd='BenkoLinc000...',
-    #     db='nav',
-    #     charset='utf8'
-    # )
+    return MySQLdb.connect(
+        host='localhost',
+        user='root',
+        passwd='password',
+        db='nav',
+        charset='utf8'
+    )
 
 
 def dbsql(conn, sql):  # 执行sql
